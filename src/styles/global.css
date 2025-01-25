@@ -1,0 +1,65 @@
+:root {
+  --bg-primary: white;
+  --text-primary: black;
+  --bg-secondary: #f4f4f4;
+}
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('../CabinetGrotesk.woff2');
+}
+
+::selection {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+* {
+  cursor: none;
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  --bg-primary: #121212;
+  --text-primary: white;
+  --bg-secondary: #1e1e1e;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+  cursor: default;
+  font-family: 'Cabinet Grotesk', sans-serif;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: 
+    width 0.2s ease, 
+    height 0.2s ease, 
+    background-color 0.2s ease;
+}
+
+.custom-cursor.cursor-on-dark-bg {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.custom-cursor.hover {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: solid 2px var(--text-primary);
+}
+
+.custom-cursor.hover.cursor-on-dark-bg {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+

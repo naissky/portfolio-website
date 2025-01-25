@@ -1,0 +1,45 @@
+---
+---
+
+<div class="mt-20 scroll-container bg-black text-white py-20 overflow-hidden relative w-full left-0">
+  <div class="scroll-text">
+    <span class="text-8xl font-bold px-4">Frontend Developer</span>
+    <span class="text-8xl font-bold px-4">UI Designer</span>
+    <span class="text-8xl font-bold px-4">Creative Developer</span>
+    <span class="text-8xl font-bold px-4">Frontend Developer</span>
+    <span class="text-8xl font-bold px-4">UI Designer</span>
+    <span class="text-8xl font-bold px-4">Creative Developer</span>
+  </div>
+</div>
+
+<style>
+  .scroll-container {
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .scroll-text {
+    display: inline-block;
+    animation: scroll 20s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Para que la animación sea más suave */
+  .scroll-text span {
+    display: inline-block;
+    transition: all 0.2s ease;
+  }
+
+  .scroll-text span:hover {
+    transform: scale(1.1);
+    color: #00DFD8;
+  }
+</style>
