@@ -27,7 +27,7 @@ const proyects = await getCollection('proyects');
     {
       proyects.map(proyect => (
         <div class="col-span-full md:col-span-6 auto-rows-auto rounded-3xl flex flex-col bg-purple-500">
-          <a href="/">
+          <a href={`/proyects/${proyect.slug}`}>
             <article class="overflow-hidden group w-full flex flex-col items-center">
               <div class="absolute mx-2 my-2 z-40 max-w-[270px] md:max-w-[370px] bg-zinc-950 rounded-3xl px-8 py-4 flex flex-col items-start justify-center opacity-0 group-hover:opacity-100 ease-in-out duration-300">
                 <div class="flex items-end justify-center">

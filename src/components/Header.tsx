@@ -1,16 +1,41 @@
-// src/components/Header.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GithubIcon, LinkedinIcon, LogoIcon } from '../assets/Icons';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  // Efecto para cargar el tema cuando el componente se monta
+  useEffect(() => {
+    // Verificar si estamos en el navegador para evitar errores de SSR
+    if (typeof window !== 'undefined') {
+      // Recuperar el tema guardado
+      const savedTheme = localStorage.getItem('theme');
+      
+      // Si el tema guardado es 'dark', aplicar tema oscuro
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        setIsDarkTheme(true);
+      }
+    }
+  }, []); // Se ejecuta solo una vez al montar el componente
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const toggleTheme = () => {
+    // Calcular el nuevo estado del tema
+    const newTheme = !isDarkTheme;
+    
+    // Alternar la clase 'dark' en el elemento raíz del documento
     document.documentElement.classList.toggle('dark');
+    
+    // Guardar el nuevo tema en localStorage
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+    
+    // Actualizar el estado del tema
+    setIsDarkTheme(newTheme);
   };
 
   return (
@@ -54,7 +79,7 @@ export const Header: React.FC = () => {
             About
           </a>
           <a
-            href="#projects"
+            href="/proyects"
             className="text-zinc-300 hover:text-purple-600 dark:hover:text-purple-400 transition duration-300"
             onClick={() => setIsMenuOpen(false)}
           >
@@ -68,8 +93,12 @@ export const Header: React.FC = () => {
             Contact
           </a>
           <div className="flex space-x-4">
-            <button onClick={toggleTheme} className='hover:scale-150 transition duration-300'>
-              🌙
+            <button 
+              onClick={toggleTheme} 
+              className='hover:scale-150 transition duration-300'
+              aria-label={`Cambiar a tema ${isDarkTheme ? 'claro' : 'oscuro'}`}
+            >
+              {isDarkTheme ? '☀️' : '🌙'}
             </button>
             <a
               href="https://github.com/tuusuario"

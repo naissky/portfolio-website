@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+
+// Genera las rutas para cada elemento de la colección
+export async function getStaticPaths() {
+  const proyects = await getCollection('proyects');
+  return proyects.map(proyect => ({
+    params: { slug: proyect.slug },
+    props: { proyect },
+  }));
+}
+
+// Obtiene el parámetro de ruta dinámica
+const { slug } = Astro.params;
+const { proyect } = Astro.props;
+
+import Layout from '../../layouts/Layout.astro';
+import TextHero from '../../components/TextHero';
+---
+
+<Layout title={proyect.data.title}>
+  <div class="min-h-screen flex flex-col items-center justify-center">
+    <div class="flex flex-col md:flex-row justify-center items-center gap-x-5">
+        <div>
+            <img src={proyect.data.image} alt={proyect.data.title}>
+        </div>
+      <div class="flex flex-col gap-y-3">
+        <TextHero client:load>
+            <h1 class="text-8xl font-bold py-4 rounded-none">{proyect.data.title}</h1>
+          </TextHero>
+          <p class="text-2xl max-w-xl">{proyect.data.description}</p>
+          <ul class="flex gap-x-3">
+            {
+                proyect.data.technologies.map(technology => (
+                    <li class="text-pink-100 font-bold bg-black px-4 py-2 rounded-full">{technology}</li>
+                ))
+            }
+        </ul>
+      </div>
+    </div>
+    <div>
+        
+    </div>
+  </div>
+  <!-- Agrega más detalles del proyecto según tu frontmatter -->
+</Layout>
