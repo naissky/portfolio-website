@@ -7,10 +7,10 @@ const proyects = await getCollection('proyects');
 
 <Layout>
   <div class="min-h-screen mt-24 xl:mt-10 flex flex-col items-center justify-center">
-    <h1 class="text-8xl font-bold">Proyectos</h1>
+    <h1 class="text-4xl md:text-8xl font-bold">Proyectos</h1>
 
     <!-- grid de proyectos -->
-    <div class="mt-10 w-full grid grid-cols-12 gap-y-3 place-items-center">
+    <div class="mt-10 w-full grid grid-cols-12 px-4 gap-y-3 place-items-center">
       {
         proyects.map(proyect => (
           <div class="col-span-12 md:col-span-6 bg-black mx-auto rounded-3xl overflow-hidden">

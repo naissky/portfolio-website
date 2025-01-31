@@ -24,15 +24,15 @@ import TextHero from '../../components/TextHero';
         <div>
             <img src={proyect.data.image} alt={proyect.data.title}>
         </div>
-      <div class="flex flex-col gap-y-3">
-        <TextHero client:load>
-            <h1 class="text-8xl font-bold py-4 rounded-none">{proyect.data.title}</h1>
+      <div class="flex flex-col gap-y-3 items-center md:items-start">
+          <TextHero client:load>
+            <h1 class="text-7xl font-bold py-4 rounded-none">{proyect.data.title}</h1>
           </TextHero>
-          <p class="text-2xl max-w-xl">{proyect.data.description}</p>
-          <ul class="flex gap-x-3">
+          <p class="text-lg md:text-2xl max-w-xl text-center md:text-left">{proyect.data.description}</p>
+          <ul class="flex flex-col md:flex-row gap-3 mt-2">
             {
                 proyect.data.technologies.map(technology => (
-                    <li class="text-pink-100 font-bold bg-black px-4 py-2 rounded-full">{technology}</li>
+                    <li class="flex items-center justify-center text-pink-100 font-bold bg-black px-4 py-2 rounded-full">{technology}</li>
                 ))
             }
         </ul>
